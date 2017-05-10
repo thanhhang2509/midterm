@@ -1,3 +1,4 @@
+//Em chua hoan thien dc phan setting voi phan guide nen em se an di tren menu tro choi
 //Using SDL, SDL_image, standard IO, and strings
 #include <SDL.h>
 #include <SDL_image.h>
@@ -10,9 +11,7 @@
 #include <SDL_ttf.h>
 #include <SDL_mixer.h>
 #include <fstream>
-
 using namespace std;
-
 //Screen dimension constants
 const int SCREEN_WIDTH = 1200;
 const int SCREEN_HEIGHT = 690;
@@ -43,6 +42,7 @@ SDL_Texture* gMenu_setting = NULL;
 SDL_Texture* gMenu_guide = NULL;
 SDL_Texture* gMenu_rank = NULL;
 SDL_Texture* gMenu_quit = NULL;
+
 SDL_Texture* gMenu_play_choose = NULL;
 SDL_Texture* gMenu_setting_choose = NULL;
 SDL_Texture* gMenu_guide_choose = NULL;
@@ -52,15 +52,15 @@ SDL_Texture* gExitGame = NULL;
 SDL_Texture* gGameover = NULL;
 SDL_Texture* gHeart = NULL;
 SDL_Texture* gPause = NULL;
-
 //sounds
+
 Mix_Chunk* gMenu_click = NULL;
 Mix_Chunk* gEat = NULL;
 Mix_Chunk* gOver = NULL;
 Mix_Chunk* gDie = NULL;
 Mix_Chunk* gCongratulation = NULL;
-
 //rank
+
 SDL_Texture* gRank_top_1 = NULL;
 SDL_Texture* gRank_top_2 = NULL;
 SDL_Texture* gRank_top_3 = NULL;
@@ -120,7 +120,6 @@ struct Snake{
 
 Snake snake;
 SDL_Rect target;
-
 bool init()
 {
 	//Initialization flag
@@ -548,11 +547,9 @@ void close()
     gRank_top_2 = NULL;
     SDL_DestroyTexture( gRank_top_3 );
     gRank_top_3 = NULL;
-
      //Free global font
     TTF_CloseFont( gFont );
     gFont = NULL;
-
     //free menu
     SDL_DestroyTexture( gBackground );
     gBackground = NULL;
@@ -568,7 +565,6 @@ void close()
     gMenu_quit = NULL;
     SDL_DestroyTexture( gMenu_rank );
     gMenu_rank = NULL;
-
     //free sounds
     Mix_FreeChunk( gMenu_click );
     gMenu_click = NULL;
@@ -788,7 +784,6 @@ void hienThi(){
     //Clear screen
     SDL_SetRenderDrawColor( gRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
     SDL_RenderClear( gRenderer );
-
     //vekhung
     veKhung();
 
@@ -800,7 +795,6 @@ void hienThi(){
     string score = numToString(snake.score);
     vietChu(score, Score_x + 150, 10, fg);
     SDL_RenderSetViewport( gRenderer, &target );
-
     //Render texture to screen
     target_1 = clock();
     if(target_1 % 2 == 0)
@@ -845,7 +839,6 @@ void hienThi(){
             gDot = gDot_doctren;
         else if(snake.dot[i].x == snake.dot[i - 1].x && snake.dot[i].y < snake.dot[i - 1].y)
             gDot = gDot_docduoi;
-
         //Render texture to screen
         if(snake.dot[i].x == snake.dot[i - 1].x && snake.dot[i].y == snake.dot[i + 1].y){//dang di ngang
             if(snake.dot[i].x > snake.dot[i + 1].x){ // di ngang tu trai sang
@@ -1538,11 +1531,8 @@ void Menu(){
             SDL_RenderSetViewport( gRenderer, &menu_guide );
             //Render texture to screen
             SDL_RenderCopy( gRenderer, gMenu_guide, NULL, NULL );
-
-
         }
         */
-
         //SDL_RenderPresent( gRenderer );
         //quit
         if(mouse_x <= 90 && mouse_y <= 650 && mouse_x >= 30 && mouse_y >= 610){
@@ -1556,8 +1546,6 @@ void Menu(){
         }
         SDL_RenderPresent( gRenderer );
     }
-
-
     //SDL_RenderPresent( gRenderer );
 }
 
